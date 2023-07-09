@@ -1,0 +1,1 @@
+export declare const MotionBox: import("@chakra-ui/system/dist/system.types").ChakraComponent<import("framer-motion").ForwardRefComponent<HTMLDivElement, import("framer-motion").HTMLMotionProps<"div">>, {}>;

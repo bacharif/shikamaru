@@ -1,0 +1,41 @@
+export declare const colors: {
+    transparent: string;
+    current: string;
+    black: string;
+    black30: string;
+    black50: string;
+    white: string;
+    white30: string;
+    white50: string;
+    gray: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    primary: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    secondary: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    secondaryDark: string;
+    tertiary: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    accent: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    warn: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    "warn-high": Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    info: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    danger: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    warning: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    success: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    error: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    errorText: string;
+    skyBlue: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    neutrals: {
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+    };
+    /** used by Chakra Alert and Toast */
+    blue: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    orange: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    red: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+    green: Record<100 | 600 | 900 | 50 | 200 | 300 | 400 | 500 | 700 | 800, string>;
+};
