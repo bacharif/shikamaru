@@ -1,0 +1,9 @@
+[package]
+name = "malicious_simulate"
+version = "0.1.0"
+authors = ["Tekkac <tekkacd@proton.me>"]
+
+[dependencies]
+starknet = ">=2.0.0"
+
+[[target.starknet-contract]]
