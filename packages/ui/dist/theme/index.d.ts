@@ -3,7 +3,7 @@ import { ChakraProviderProps, theme as baseTheme } from "@chakra-ui/react";
 import { colors } from "./colors";
 export { scrollbarStyle } from "./scrollbarStyle";
 export { SetDarkMode } from "./SetDarkMode";
-export type UITheme = Omit<typeof baseTheme, "colors"> & {
+export declare type UITheme = Omit<typeof baseTheme, "colors"> & {
     colors: typeof colors;
 };
 export declare const theme: UITheme;

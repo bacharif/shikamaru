@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Presentation } from "../types";
-type DeclaredPresentationByPath = Record<string, Presentation>;
+declare type DeclaredPresentationByPath = Record<string, Presentation>;
 export interface WrappedChildrenAndPresentation {
     /** the routes wrapped with StackScreen */
     wrappedChildren: ReactNode;

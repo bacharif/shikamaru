@@ -14,4 +14,4 @@ export interface CosignerResponse {
         s: string;
     };
 }
-export type Cosigner = (message: CosignerMessage | CosignerOffchainMessage, isOffchainMessage?: boolean) => Promise<CosignerResponse>;
+export declare type Cosigner = (message: CosignerMessage | CosignerOffchainMessage, isOffchainMessage?: boolean) => Promise<CosignerResponse>;

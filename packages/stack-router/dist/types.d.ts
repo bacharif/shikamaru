@@ -9,7 +9,7 @@ export interface ScreenProps {
     /** how this screen should be presented */
     presentation: Presentation;
 }
-export type Presentation = "replace" | "push" | "modal" | "modalSheet" | "modalStacked" | "pushModalSheet" | "stacked" | "stackedStacked";
+export declare type Presentation = "replace" | "push" | "modal" | "modalSheet" | "modalStacked" | "pushModalSheet" | "stacked" | "stackedStacked";
 export interface PresentationVariant {
     enter: Target;
     active: Target;
@@ -20,8 +20,8 @@ export declare enum PresentationDirection {
     Forwards = "FORWARDS",
     Backwards = "BACKWARDS"
 }
-export type DeclaredPresentationByPath = Record<string, Presentation>;
-export type PresentationByPath = Record<string, {
+export declare type DeclaredPresentationByPath = Record<string, Presentation>;
+export declare type PresentationByPath = Record<string, {
     variant: PresentationVariant;
     presentation: Presentation;
     zIndex: number;

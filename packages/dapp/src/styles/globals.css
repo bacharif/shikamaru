@@ -511,3 +511,62 @@ blockquote footer {
   line-height: var(--line-height);
   padding: 1.5rem 0;
 }
+
+.diagram[data-v-bc056712] {
+  text-align: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 75px;
+  width: 100%;
+  aspect-ratio: 2.15/1;
+  max-width: calc(min(105vh, 80vw, 1100px));
+  pointer-events: none;
+}
+
+.track[data-v-bc056712] {
+  position: absolute;
+  top: 50%;
+  max-width: 100%;
+}
+
+.track[data-v-bc056712] {
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.option1[data-v-bc056712] {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  transition: transform .15s ease-in-out;
+}
+
+.option2[data-v-bc056712] {
+  position: absolute;
+  top: 50%;
+  transition: transform .15s ease-in-out;
+}
+
+.you[data-v-bc056712] {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-30%);
+  left: 14%;
+  max-width: 14%;
+}
+
+.circle-trolley[data-v-bc056712], .trolley[data-v-bc056712] {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+}
+
+.trolley[data-v-bc056712] {
+  max-width: 26%;
+  transform: translateY(-144%);
+  transform-origin: center center;
+  z-index: 5;
+}

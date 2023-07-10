@@ -1,18 +1,21 @@
 var b = Object.defineProperty;
 var A = (e, t, n) => t in e ? b(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
 var p = (e, t, n) => (A(e, typeof t != "symbol" ? t + "" : t, n), n);
-import { transaction as S, GatewayError as _, number as h, stark as E, hash as T } from "starknet";
+import { transaction as S, GatewayError as _, number as h, stark as E, hash as C } from "starknet";
+function T(e) {
+  return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
+}
 var k = /* @__PURE__ */ function() {
   function e(n, r) {
     if (typeof n != "function")
       throw new TypeError("DataLoader must be constructed with a function which accepts " + ("Array<key> and returns Promise<Array<value>>, but got: " + n + "."));
-    this._batchLoadFn = n, this._maxBatchSize = B(r), this._batchScheduleFn = L(r), this._cacheKeyFn = D(r), this._cacheMap = F(r), this._batch = null, this.name = x(r);
+    this._batchLoadFn = n, this._maxBatchSize = D(r), this._batchScheduleFn = L(r), this._cacheKeyFn = F(r), this._cacheMap = I(r), this._batch = null, this.name = K(r);
   }
   var t = e.prototype;
   return t.load = function(r) {
     if (r == null)
       throw new TypeError("The loader.load() function must be called with a value, " + ("but got: " + String(r) + "."));
-    var a = M(this), c = this._cacheMap, o = this._cacheKeyFn(r);
+    var a = P(this), c = this._cacheMap, o = this._cacheKeyFn(r);
     if (c) {
       var i = c.get(o);
       if (i) {
@@ -62,7 +65,7 @@ var k = /* @__PURE__ */ function() {
     }
     return this;
   }, e;
-}(), C = typeof process == "object" && typeof process.nextTick == "function" ? function(e) {
+}(), M = typeof process == "object" && typeof process.nextTick == "function" ? function(e) {
   d || (d = Promise.resolve()), d.then(function() {
     process.nextTick(e);
   });
@@ -71,7 +74,7 @@ var k = /* @__PURE__ */ function() {
 } : function(e) {
   setTimeout(e);
 }, d;
-function M(e) {
+function P(e) {
   var t = e._batch;
   if (t !== null && !t.hasDispatched && t.keys.length < e._maxBatchSize)
     return t;
@@ -81,10 +84,10 @@ function M(e) {
     callbacks: []
   };
   return e._batch = n, e._batchScheduleFn(function() {
-    P(e, n);
+    B(e, n);
   }), n;
 }
-function P(e, t) {
+function B(e, t) {
   if (t.hasDispatched = !0, t.keys.length === 0) {
     m(t);
     return;
@@ -127,7 +130,7 @@ function m(e) {
     for (var t = 0; t < e.cacheHits.length; t++)
       e.cacheHits[t]();
 }
-function B(e) {
+function D(e) {
   var t = !e || e.batch !== !1;
   if (!t)
     return 1;
@@ -141,12 +144,12 @@ function B(e) {
 function L(e) {
   var t = e && e.batchScheduleFn;
   if (t === void 0)
-    return C;
+    return M;
   if (typeof t != "function")
     throw new TypeError("batchScheduleFn must be a function: " + t);
   return t;
 }
-function D(e) {
+function F(e) {
   var t = e && e.cacheKeyFn;
   if (t === void 0)
     return function(n) {
@@ -156,7 +159,7 @@ function D(e) {
     throw new TypeError("cacheKeyFn must be a function: " + t);
   return t;
 }
-function F(e) {
+function I(e) {
   var t = !e || e.cache !== !1;
   if (!t)
     return null;
@@ -172,19 +175,19 @@ function F(e) {
   }
   return n;
 }
-function x(e) {
+function K(e) {
   return e && e.name ? e.name : null;
 }
 function g(e) {
   return typeof e == "object" && e !== null && typeof e.length == "number" && (e.length === 0 || e.length > 0 && Object.prototype.hasOwnProperty.call(e, e.length - 1));
 }
-var I = k;
-const w = (e) => {
+var x = k;
+const j = /* @__PURE__ */ T(x), w = (e) => {
   if (e.length === 0)
     return [];
   const [t, ...n] = e, r = h.toBN(t).toNumber(), a = n.slice(0, r), c = n.slice(r);
   return [a, ...w(c)];
-}, K = (e) => {
+}, z = (e) => {
   var t;
   try {
     const n = (t = e.toString().match(/Error message: multicall (\d+) failed/)) == null ? void 0 : t[1];
@@ -194,7 +197,7 @@ const w = (e) => {
   } catch {
     throw e;
   }
-}, j = async (e, t) => (await Promise.allSettled(
+}, N = async (e, t) => (await Promise.allSettled(
   t.map(
     (r) => e.callContract({
       contractAddress: r.contractAddress,
@@ -216,8 +219,8 @@ const w = (e) => {
     if (!(r instanceof Error))
       throw r;
     if (r instanceof _ && r.errorCode === "StarknetErrorCode.UNINITIALIZED_CONTRACT")
-      return j(e, n);
-    const a = K(r), c = n.filter((i, s) => s !== a), o = await v(
+      return N(e, n);
+    const a = z(r), c = n.filter((i, s) => s !== a), o = await v(
       e,
       t,
       c
@@ -228,11 +231,11 @@ const w = (e) => {
       ...o.slice(a)
     ];
   }
-}, z = (e, t, n = {
+}, H = (e, t, n = {
   batchInterval: 500,
   maxBatchSize: 10
 }) => {
-  const r = new I(
+  const r = new j(
     async (a) => (r.clearAll(), v(e, t, a)),
     {
       maxBatchSize: n.maxBatchSize,
@@ -242,22 +245,22 @@ const w = (e) => {
       cacheKeyFn(a) {
         const { contractAddress: c, entrypoint: o, calldata: i = [] } = a, s = h.toHex(
           h.toBN(c)
-        ), l = T.getSelector(o), u = i.map((f) => h.toHex(h.toBN(f))).join("-");
+        ), l = C.getSelector(o), u = i.map((f) => h.toHex(h.toBN(f))).join("-");
         return `${s}--${l}--${u}`;
       }
     }
   );
   return r;
-}, N = "0x05754af3760f3356da99aea5c3ec39ccac7783d925a19666ebbeca58ff0087f4";
-class V {
-  constructor(t, n = N, r) {
+}, R = "0x05754af3760f3356da99aea5c3ec39ccac7783d925a19666ebbeca58ff0087f4";
+class $ {
+  constructor(t, n = R, r) {
     p(this, "dataloader");
-    this.provider = t, this.address = n, this.dataloader = z(t, n, r);
+    this.provider = t, this.address = n, this.dataloader = H(t, n, r);
   }
   call(t) {
     return this.dataloader.load(t);
   }
 }
 export {
-  V as Multicall
+  $ as Multicall
 };

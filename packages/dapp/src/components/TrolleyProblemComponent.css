@@ -1,0 +1,44 @@
+.diagram[data-v-bc056712] {
+    text-align: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 75px;
+    width: 100%;
+    aspect-ratio: 2.15/1;
+    max-width: calc(min(105vh, 80vw, 1100px));
+    pointer-events: none;
+  }
+  
+  .diagram[data-v-bc056712] .track {
+    /* Add specific styles for the track element */
+  }
+  
+  .diagram[data-v-bc056712] .option1 {
+    /* Add specific styles for the option1 element */
+  }
+  
+  .diagram[data-v-bc056712] .splat1 {
+    /* Add specific styles for the splat1 element */
+  }
+  
+  .diagram[data-v-bc056712] .option2 {
+    /* Add specific styles for the option2 element */
+  }
+  
+  .diagram[data-v-bc056712] .splat2 {
+    /* Add specific styles for the splat2 element */
+  }
+  
+  .diagram[data-v-bc056712] .you {
+    /* Add specific styles for the you element */
+  }
+  
+  .diagram[data-v-bc056712] .trolley-wrapper {
+    /* Add specific styles for the trolley-wrapper element */
+  }
+  
+  .diagram[data-v-bc056712] .explosion {
+    /* Add specific styles for the explosion element */
+  }
+  

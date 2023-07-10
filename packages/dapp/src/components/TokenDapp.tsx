@@ -2,6 +2,8 @@ import { SessionAccount, createSession } from "@argent/x-sessions"
 import { FC, useEffect, useState } from "react"
 import { Abi, AccountInterface, Contract, ec } from "starknet"
 import { hash } from "starknet5"
+import FlowChart  from "./FlowChart"
+import TrolleyProblemComponent from "./TrolleyProblemComponent"
 
 import Erc20Abi from "../../abi/ERC20.json"
 import { truncateAddress, truncateHex } from "../services/address.service"
@@ -255,24 +257,9 @@ export const TokenDapp: FC<{
        {!showWarning && (
       <div className="columns">
         <form onSubmit={handleMintSubmit}>
-          <h2 className={styles.title}>Approve token in malecious contract</h2>
+          <h2 className={styles.title}>Buy a token  for 0.00000000002 in malecious contract</h2>
 
-          <label htmlFor="mint-amount">Amount</label>
-          <input
-            type="text"
-            id="approve-amount"
-            name="fname"
-            value={mintAmount}
-            onChange={(e) => setMintAmount(e.target.value)}
-          />
-
-          <input type="submit" />
-        </form>
-
-        <form onSubmit={handleMintSubmit}>
-          <h2 className={styles.title}>Approve token in safe contract</h2>
-
-          <label htmlFor="mint-amount">Amount</label>
+          <label htmlFor="mint-amount">Approve Amount</label>
           <input
             type="text"
             id="approve-amount"
@@ -305,7 +292,7 @@ export const TokenDapp: FC<{
           <form onSubmit={handleSessionTransactionSubmit}>
             <h2 className={styles.title}>Open session</h2>
 
-            <p>Send some ETH to yourself using the session!</p>
+            <p>Buy some ETH to yourself using the session!</p>
 
             <input
               type="submit"
@@ -318,30 +305,7 @@ export const TokenDapp: FC<{
       
       {showWarning && (
       <div>
-        <form
-          onSubmit={async (e) => {
-            e.preventDefault();
-            setShowWarning(false); // Close the warning box.
-            // Continue with the mint operation.
-            setTransactionStatus("approve");
-            try {
-              console.log("mint", mintAmount);
-              const result = await mintToken(mintAmount, network);
-              console.log(result);
-              setLastTransactionHash(result.transaction_hash);
-              setTransactionStatus("pending");
-            } catch (e) {
-              console.error(e);
-              setTransactionStatus("idle");
-            }
-          }}
-        >
-          <p>
-            You are about to approve a token for a contract. This is a risky
-            operation. Are you sure you want to proceed?
-          </p>
-          <button type="submit">Yes, I understand the risks</button>
-        </form>
+          <TrolleyProblemComponent></TrolleyProblemComponent>
       </div>
     )}
 

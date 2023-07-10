@@ -4,5 +4,5 @@ import { ReactNode } from "react";
 interface ToastOptions extends UseToastOptions {
     icon?: ReactNode;
 }
-export declare const useToast: (defaultOptions?: ToastOptions) => (options: UseToastOptions) => import("@chakra-ui/toast/dist/toast.types-76829e6b").b;
+export declare const useToast: (defaultOptions?: ToastOptions | undefined) => (options: UseToastOptions) => import("@chakra-ui/toast/dist/toast.types-76829e6b").b;
 export {};

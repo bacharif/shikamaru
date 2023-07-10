@@ -26,7 +26,7 @@ declare const variants: {
         fg: string;
     };
 };
-export type FlowHeaderVariant = keyof typeof variants;
+export declare type FlowHeaderVariant = keyof typeof variants;
 export interface FlowHeaderProps {
     title: ReactNode;
     subtitle?: ReactNode;

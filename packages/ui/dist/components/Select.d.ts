@@ -1,5 +1,5 @@
 import { FC, ReactElement, ReactNode } from "react";
-type Option = {
+declare type Option = {
     icon?: ReactElement;
     label: string | ReactNode;
     labelSelected: string;

@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 export declare const CellStack: ChakraComponent<import("@chakra-ui/system/dist/system.types").ComponentWithAs<"div", import("@chakra-ui/layout/dist/flex").FlexProps>, {}>;
 export declare const SpacerCell: ChakraComponent<import("@chakra-ui/system/dist/system.types").ComponentWithAs<"div", import("@chakra-ui/layout/dist/flex").FlexProps>, {}>;
 export declare const HeaderCell: ChakraComponent<ChakraComponent<"h6", {}>, {}>;
-export type ButtonCellProps = ChakraComponent<"button", {
+export declare type ButtonCellProps = ChakraComponent<"button", {
     leftIcon?: ReactNode;
     rightIcon?: ReactNode;
     extendedDescription?: ReactNode;

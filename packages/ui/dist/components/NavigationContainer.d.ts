@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { NavigationBarProps } from "./NavigationBar";
-type BaseNavigationContainerProps = Omit<NavigationBarProps, "scroll">;
+declare type BaseNavigationContainerProps = Omit<NavigationBarProps, "scroll">;
 export interface NavigationContainerProps extends BaseNavigationContainerProps {
     /** Unique id for persisting scroll position - if provided, scroll position will be restored when navigating 'back' to this component. See {@link useScrollRestoration} */
     scrollKey?: string;

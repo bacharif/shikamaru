@@ -1,32 +1,32 @@
 var k = Object.defineProperty;
-var T = (s, t, e) => t in s ? k(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
-var g = (s, t, e) => (T(s, typeof t != "symbol" ? t + "" : t, e), e);
-import { stark as h, number as l, hash as m, typedData as F, merkle as I, Account as b, constants as N, transaction as y } from "starknet";
-const A = "0x31c70ed28f4b0faf39b2f97d8f0a61a36968319c13fe6f2051b8de5a15f3d9b", v = "0x2f0026e78543f036f33e26a8f5891b88c58dc1e20cbbfaf0bb53274da6fa568";
-async function _(s, t) {
-  const { result: e } = await t.callContract({
-    contractAddress: s,
+var T = (t, s, e) => s in t ? k(t, s, { enumerable: !0, configurable: !0, writable: !0, value: e }) : t[s] = e;
+var g = (t, s, e) => (T(t, typeof s != "symbol" ? s + "" : s, e), e);
+import { stark as h, number as l, hash as m, typedData as F, merkle as I, Account as b, constants as E, transaction as y } from "starknet";
+const A = "0x31c70ed28f4b0faf39b2f97d8f0a61a36968319c13fe6f2051b8de5a15f3d9b", N = "0x2f0026e78543f036f33e26a8f5891b88c58dc1e20cbbfaf0bb53274da6fa568";
+async function O(t, s) {
+  const { result: e } = await s.callContract({
+    contractAddress: t,
     entrypoint: "isPlugin",
     calldata: h.compileCalldata({ classHash: A })
   });
   return !l.toBN(e[0]).isZero();
 }
-function x({ contractAddress: s, selector: t }) {
+function S({ contractAddress: t, selector: s }) {
   return m.computeHashOnElements([
-    v,
-    s,
-    F.prepareSelector(t)
+    N,
+    t,
+    F.prepareSelector(s)
   ]);
 }
-function S(s) {
-  return new I.MerkleTree(s.map(x));
+function w(t) {
+  return new I.MerkleTree(t.map(S));
 }
-function E(s) {
-  const { root: t } = S(s.policies);
-  return { ...s, root: t };
+function P(t) {
+  const { root: s } = w(t.policies);
+  return { ...t, root: s };
 }
-async function M(s, t) {
-  const { expires: e, key: n, policies: a, root: r } = E(s), o = await t.signMessage({
+async function L(t, s) {
+  const { expires: e, key: n, policies: a, root: r } = P(t), o = await s.signMessage({
     primaryType: "Session",
     types: {
       Policy: [
@@ -41,7 +41,7 @@ async function M(s, t) {
       StarkNetDomain: [{ name: "chainId", type: "felt" }]
     },
     domain: {
-      chainId: t.chainId
+      chainId: s.chainId
     },
     message: {
       key: n,
@@ -58,20 +58,24 @@ async function M(s, t) {
     signature: o
   };
 }
-var P = w;
-function w(s, t) {
-  if (!s)
-    throw new Error(t || "Assertion failed");
+function v(t) {
+  return t && t.__esModule && Object.prototype.hasOwnProperty.call(t, "default") ? t.default : t;
 }
-w.equal = function(t, e, n) {
-  if (t != e)
-    throw new Error(n || "Assertion failed: " + t + " != " + e);
+var B = C;
+function C(t, s) {
+  if (!t)
+    throw new Error(s || "Assertion failed");
+}
+C.equal = function(s, e, n) {
+  if (s != e)
+    throw new Error(n || "Assertion failed: " + s + " != " + e);
 };
-class L extends b {
+const _ = /* @__PURE__ */ v(B);
+class $ extends b {
   constructor(e, n, a, r) {
     super(e, n, a);
     g(this, "merkleTree");
-    this.signedSession = r, this.merkleTree = S(r.policies), P(r.root === this.merkleTree.root, "Invalid session");
+    this.signedSession = r, this.merkleTree = w(r.policies), _(r.root === this.merkleTree.root, "Invalid session");
   }
   async sessionToCall(e, n) {
     return {
@@ -100,7 +104,7 @@ class L extends b {
   }
   proofCalls(e) {
     return e.map((n) => {
-      const a = x({
+      const a = S({
         contractAddress: n.contractAddress,
         selector: n.entrypoint
       });
@@ -118,7 +122,7 @@ class L extends b {
     ), o = l.toBN(n ?? await this.getNonce()), i = l.toBN(m.feeTransactionVersion), c = await this.getChainId(), d = {
       walletAddress: this.address,
       nonce: l.toBN(o),
-      maxFee: N.ZERO,
+      maxFee: E.ZERO,
       version: i,
       chainId: c
     }, p = await this.signer.signTransaction(
@@ -132,10 +136,10 @@ class L extends b {
       },
       { version: i, nonce: o },
       a
-    ), C = h.estimatedFeeToMaxFee(u.overall_fee);
+    ), x = h.estimatedFeeToMaxFee(u.overall_fee);
     return {
       ...u,
-      suggestedMaxFee: C
+      suggestedMaxFee: x
     };
   }
   /**
@@ -194,11 +198,11 @@ class L extends b {
 }
 export {
   A as SESSION_PLUGIN_CLASS_HASH,
-  L as SessionAccount,
-  S as createMerkleTreeForPolicies,
-  M as createSession,
-  L as default,
-  x as preparePolicy,
-  E as prepareSession,
-  _ as supportsSessions
+  $ as SessionAccount,
+  w as createMerkleTreeForPolicies,
+  L as createSession,
+  $ as default,
+  S as preparePolicy,
+  P as prepareSession,
+  O as supportsSessions
 };

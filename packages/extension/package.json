@@ -31,7 +31,7 @@
     "dotenv-webpack": "^8.0.0",
     "esbuild-loader": "^2.19.0",
     "eslint": "^8.7.0",
-    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react": "^7.25.3",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-webpack-plugin": "^4.0.0",
     "fetch-intercept": "^2.4.0",
